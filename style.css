@@ -154,8 +154,8 @@ body {
 
 .chat-form button {
   font-size: 18px;
-  background: #000;
   color: #fff;
+  background: #000;
   border: none;
   padding: 12px;
   width: 48px;
@@ -164,16 +164,11 @@ body {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.6s ease;
 }
 
 .chat-form button:hover {
-  background: #b8972a;
-}
-
-.chat-form button:focus {
-  outline: 2px solid #000;
-  outline-offset: 2px;
+  background: linear-gradient(135deg, #c9a84c, #b8972a, #e9c562);
 }
 
 .visually-hidden {
@@ -275,7 +270,6 @@ body {
   background-color: #fdf8ee;
 }
 
-
 .selected-products {
   margin: 40px 0;
   padding: 20px;
@@ -301,11 +295,19 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
-  background: #000;
+  background: linear-gradient(135deg, #c9a84c, #b8972a, #e9c562);
+  background-size: 200% 200%;
+  background-position: left center;
   color: #fff;
+  border: 2px solid #b8972a;
   padding: 8px 12px;
   border-radius: 20px;
   font-size: 14px;
+  transition: background-position 0.6s ease;
+}
+
+.selected-tag:hover {
+  background-position: right center;
 }
 
 .remove-btn {
@@ -318,7 +320,7 @@ body {
 }
 
 .remove-btn:hover {
-  color: #b8972a;
+  color: #000;
 }
 
 .generate-btn {
@@ -332,18 +334,27 @@ body {
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.6s ease;
 }
 
 .generate-btn:hover {
-  background: #b8972a;
-}
-
-.generate-btn i {
-  margin-right: 8px;
+  background: linear-gradient(135deg, #c9a84c, #b8972a, #e9c562);
 }
 
 @media (max-width: 600px) {
+  body {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .page-wrapper {
+    width: 95%;
+  }
+
+  .search-section {
+    flex-direction: column;
+  }
+
   .products-grid {
     justify-content: center;
   }
