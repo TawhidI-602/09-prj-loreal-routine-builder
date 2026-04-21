@@ -1,11 +1,9 @@
-/* —— basic reset —— */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* —— body + fonts —— */
 body {
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
   color: #333;
@@ -18,7 +16,6 @@ body {
   max-width: 900px;
 }
 
-/* header */
 .site-header {
   text-align: center;
   padding-top: 50px;
@@ -34,18 +31,21 @@ body {
   font-size: 22px;
   font-weight: 500;
   margin-bottom: 10px;
+  color: #b8972a;
+  letter-spacing: 3px;
+  text-transform: uppercase;
 }
 
-/* category filter */
 .search-section {
   margin: 30px 0;
   display: flex;
+  gap: 12px;
 }
 
 .search-section select {
-  width: 100%;
+  flex: 1;
   padding: 16px;
-  font-size: 18px;
+  font-size: 16px;
   border: 2px solid #000;
   border-radius: 8px;
   cursor: pointer;
@@ -55,10 +55,24 @@ body {
 
 .search-section select:focus {
   outline: none;
-  border-color: #666;
+  border-color: #b8972a;
 }
 
-/* chat section */
+#searchInput {
+  flex: 1;
+  padding: 16px;
+  font-size: 16px;
+  border: 2px solid #000;
+  border-radius: 8px;
+  background-color: white;
+  font-weight: 500;
+}
+
+#searchInput:focus {
+  outline: none;
+  border-color: #b8972a;
+}
+
 .chatbox {
   margin: 40px 0;
   border: 2px solid #000;
@@ -69,19 +83,47 @@ body {
 .chatbox h2 {
   font-size: 20px;
   margin-bottom: 20px;
+  color: #b8972a;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 .chat-window {
   padding: 20px;
-  font-size: 18px;
+  font-size: 14px;
   line-height: 1.5;
-  height: 250px;
+  height: 300px;
   overflow-y: auto;
   background: #fafafa;
   margin-bottom: 20px;
+  border: 1px solid #eee;
+  border-radius: 4px;
 }
 
-/* placeholder message */
+.msg {
+  margin-bottom: 14px;
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+.msg.user {
+  color: #000;
+}
+
+.msg.ai {
+  color: #636363;
+}
+
+.msg-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #b8972a;
+  margin-bottom: 4px;
+}
+
 .placeholder-message {
   width: 100%;
   text-align: center;
@@ -90,7 +132,6 @@ body {
   font-size: 18px;
 }
 
-/* input row */
 .chat-form {
   display: flex;
   gap: 12px;
@@ -108,7 +149,7 @@ body {
 
 .chat-form input:focus {
   outline: none;
-  border-bottom-color: #000;
+  border-bottom-color: #b8972a;
 }
 
 .chat-form button {
@@ -127,7 +168,7 @@ body {
 }
 
 .chat-form button:hover {
-  background: #666666;
+  background: #b8972a;
 }
 
 .chat-form button:focus {
@@ -135,7 +176,6 @@ body {
   outline-offset: 2px;
 }
 
-/* visually hidden */
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -148,7 +188,6 @@ body {
   border: 0;
 }
 
-/* footer */
 .site-footer {
   margin: 60px 0 40px;
   text-align: center;
@@ -167,10 +206,9 @@ body {
 }
 
 .site-footer a:hover {
-  color: #666666;
+  color: #b8972a;
 }
 
-/* products grid */
 .products-grid {
   display: flex;
   flex-wrap: wrap;
@@ -179,13 +217,14 @@ body {
 }
 
 .product-card {
-  flex: 0 1 calc(33.333% - 14px);
+  flex: 0 1 calc(50% - 10px);
   border: 1px solid #ccc;
   padding: 15px;
   border-radius: 4px;
   display: flex;
   gap: 15px;
-  min-height: 160px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .product-card img {
@@ -200,7 +239,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: 110px;
+  gap: 6px;
 }
 
 .product-card h3 {
@@ -208,12 +247,35 @@ body {
   margin-bottom: 8px;
 }
 
-.product-card p {
+.product-brand {
   font-size: 14px;
   color: #666;
 }
 
-/* selected products */
+.product-description {
+  font-size: 12px;
+  color: #444;
+  line-height: 1.5;
+  max-height: 2.8em;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.product-card.expanded .product-description {
+  max-height: 300px;
+  -webkit-line-clamp: unset;
+  display: block;
+}
+
+.product-card.selected {
+  border: 2px solid #b8972a;
+  background-color: #fdf8ee;
+}
+
+
 .selected-products {
   margin: 40px 0;
   padding: 20px;
@@ -224,12 +286,39 @@ body {
 .selected-products h2 {
   font-size: 20px;
   margin-bottom: 20px;
+  color: #b8972a;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 #selectedProductsList {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+}
+
+.selected-tag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #000;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+.remove-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.remove-btn:hover {
+  color: #b8972a;
 }
 
 .generate-btn {
@@ -247,9 +336,91 @@ body {
 }
 
 .generate-btn:hover {
-  background: #666;
+  background: #b8972a;
 }
 
 .generate-btn i {
   margin-right: 8px;
+}
+
+@media (max-width: 600px) {
+  .products-grid {
+    justify-content: center;
+  }
+
+  .product-card {
+    flex: 0 1 100%;
+  }
+
+  .product-card img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .product-card h3 {
+    font-size: 14px;
+  }
+
+  .product-brand {
+    font-size: 12px;
+  }
+
+  .product-description {
+    font-size: 11px;
+  }
+
+  .selected-tag {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  .generate-btn {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  .chatbox {
+    padding: 16px;
+  }
+
+  .chat-form input {
+    font-size: 14px;
+  }
+}
+
+[dir="rtl"] .products-grid {
+  direction: rtl;
+}
+
+[dir="rtl"] .product-card {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .product-info {
+  text-align: right;
+}
+
+[dir="rtl"] .selected-products {
+  text-align: right;
+}
+
+[dir="rtl"] #selectedProductsList {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .chat-window {
+  direction: rtl;
+  text-align: right;
+}
+
+[dir="rtl"] .chat-form {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .search-section {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .msg-label {
+  text-align: right;
 }
